@@ -1,8 +1,3 @@
-cmake_minimum_required(VERSION 3.15)
-
-project (unit_tests_smtp)
-
-find_package(Boost 1.71 REQUIRED COMPONENTS unit_test_framework)
 
 add_executable(unit_tests_smtp 
     main_test_smtp.cpp
