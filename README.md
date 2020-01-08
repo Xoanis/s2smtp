@@ -61,7 +61,7 @@ Dependency:
 
 Windows:
 
-The easiest  way is using vcpkg
+The easiest  way is using vcpkg:
 
 ```ps1
 mkdir example
@@ -76,7 +76,7 @@ Copy text "-DCMAKE_TOOLCHAIN_FILE=<path>/vcpkg/scripts/buildsystems/vcpkg.cmake"
 ```ps1
 .\vcpkg.exe install boost-asio boost-spirit boost-program-options boost-test cppcodec
 cd ..
-git clone <https://github.com/xoanis/s2smtp.git>
+git clone https://github.com/Xoanis/s2smtp.git
 cd s2smtp
 mkdir build
 cd build
