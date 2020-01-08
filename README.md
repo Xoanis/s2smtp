@@ -71,7 +71,7 @@ cd .\vcpkg\
 .\bootstrap-vcpkg.bat
 .\vcpkg.exe integrate install
 ```
-Copy text "-DCMAKE_TOOLCHAIN_FILE=<path>/vcpkg/scripts/buildsystems/vcpkg.cmake"
+Copy text "-DCMAKE_TOOLCHAIN_FILE=some-path/vcpkg/scripts/buildsystems/vcpkg.cmake"
 
 ```ps1
 .\vcpkg.exe install boost-asio boost-spirit boost-program-options boost-test cppcodec
@@ -80,7 +80,7 @@ git clone https://github.com/Xoanis/s2smtp.git
 cd s2smtp
 mkdir build
 cd build
-cmake .. "-DCMAKE_TOOLCHAIN_FILE=<path>/vcpkg/scripts/buildsystems/vcpkg.cmake"
+cmake .. "-DCMAKE_TOOLCHAIN_FILE=some-path/vcpkg/scripts/buildsystems/vcpkg.cmake"
 cmake --build .
 ```
 If you use CMake to build your project and you want to link s2smtp with find_package(s2smtp) command you need to install s2smtp package:
