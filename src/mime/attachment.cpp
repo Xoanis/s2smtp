@@ -1,0 +1,61 @@
+// Copyright (c) 2020 Ivan Petrov <petroviv90@gmail.com>
+// Licensed under the MIT license.
+
+#include "s2smtp/mime/attachment.hpp"
+
+#include <filesystem>
+#include <fstream>
+#include <iterator>
+
+namespace s2smtp {
+namespace mime {
+
+namespace fs = std::filesystem;
+
+const std::string attachment_info_t::default_content_type =
+    "application/octet-stream";
+
+bool attachment_info_t::operator==(const attachment_info_t &rh) const {
+  return (name == rh.name) && (content_type == rh.content_type);
+}
+
+attachment_info_t::attachment_info_t(std::string name, std::string content_type)
+    : name(std::move(name)), content_type(std::move(content_type)) {}
+
+attachment_info_t::attachment_info_t(std::string name)
+    : attachment_info_t(std::move(name), default_content_type) {}
+
+attachment_t::attachment_t(attachment_info_t info, std::istream &stream)
+    : info_(std::move(info)), content_(std::istreambuf_iterator<char>(stream),
+                                       std::istreambuf_iterator<char>()) {
+  if (stream.rdstate())
+    throw mime_error("File \"" + info_.name + "\": Stream reading error");
+}
+
+attachment_t::attachment_t(attachment_info_t info, std::istream &&stream)
+    : info_(std::move(info)), content_(std::istreambuf_iterator<char>(stream),
+                                       std::istreambuf_iterator<char>()) {
+  if (stream.rdstate())
+    throw mime_error("File \"" + info_.name + "\": Stream reading error");
+}
+
+attachment_t::attachment_t(const std::string &attach_name, std::istream &stream)
+    : attachment_t(attachment_info_t(attach_name), stream) {}
+
+attachment_t::attachment_t(const std::string &attach_name,
+                           std::istream &&stream)
+    : attachment_t(attachment_info_t(attach_name), stream) {}
+
+std::ifstream open_fstream(const std::string &file_path) {
+  std::ifstream fstream(file_path, std::ios_base::binary);
+  if (!fstream)
+    throw mime_error("Failed to open file \"" + file_path + "\"");
+  return fstream;
+}
+
+attachment_t::attachment_t(const std::string &file_path)
+    : attachment_t(fs::path(file_path).filename().string(),
+                   open_fstream(file_path)) {}
+
+} // namespace mime
+} // namespace s2smtp

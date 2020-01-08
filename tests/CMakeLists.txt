@@ -1,0 +1,4 @@
+add_subdirectory(test_mime)
+add_subdirectory(test_parsing)
+add_subdirectory(test_serialization)
+add_subdirectory(test_smtp)

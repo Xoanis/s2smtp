@@ -1,0 +1,4 @@
+// the configured options and settings for s2smtp
+#define s2smtp_VERSION_MAJOR @s2smtp_VERSION_MAJOR@
+#define s2smtp_VERSION_MINOR @s2smtp_VERSION_MINOR@
+#define s2smtp_VERSION_STR "@s2smtp_VERSION_MAJOR@.@s2smtp_VERSION_MINOR@"

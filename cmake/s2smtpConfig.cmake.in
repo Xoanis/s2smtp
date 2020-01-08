@@ -1,0 +1,16 @@
+  
+get_filename_component(s2smtp_CMAKE_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
+include(CMakeFindDependencyMacro)
+
+list(APPEND CMAKE_MODULE_PATH ${s2smtp_CMAKE_DIR})
+
+find_dependency(Boost 1.71 REQUIRED COMPONENTS thread system date_time)
+find_dependency(OpenSSL REQUIRED)
+find_dependency(cppcodec REQUIRED MODULE)
+list(REMOVE_AT CMAKE_MODULE_PATH -1)
+
+if(NOT TARGET s2smtp::s2smtp)
+    include("${s2smtp_CMAKE_DIR}/s2smtpTargets.cmake")
+endif()
+
+set(s2smtp_LIBRARIES s2smtp::s2smtp)
