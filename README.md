@@ -43,7 +43,9 @@ int main(int, char **) {
 
 # Requirements #
 CMake 3.15
+
 Windows: Visual Studio 15 2017
+
 Linux: g++-9
 
 Dependency:
@@ -59,7 +61,7 @@ Dependency:
 
 Windows:
 
-The easist way is using vcpkg
+The easiest  way is using vcpkg
 
 ```ps1
 mkdir example
@@ -96,6 +98,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE s2smtp::s2smtp)
 ```
 
 Linux:
+
 Building on Linux can be done in the same way.
 
 
