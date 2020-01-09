@@ -1,3 +1,5 @@
+[![Action Status](https://github.com/Xoanis/s2smtp/workflows/build-workflow/badge.svg)](https://github.com/Xoanis/s2smtp/actions)
+[![BCH compliance](https://bettercodehub.com/edge/badge/Xoanis/s2smtp?branch=master)](https://bettercodehub.com/)
 # s2smtp #
 
 s2smtp is a cross platform SMTP client based on boost and c++17.
