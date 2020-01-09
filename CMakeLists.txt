@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 3.15)
 project(s2smtp VERSION 0.1.0 LANGUAGES CXX)
 
 OPTION( BUILD_EXAMPLES "build examples?" ON )
-# OPTION( BUILD_TESTING "build tests?" ON )
 
 find_package(Boost 1.71 COMPONENTS thread system date_time REQUIRED)
 find_package(OpenSSL REQUIRED)
@@ -10,8 +9,7 @@ find_package(OpenSSL REQUIRED)
 list(INSERT CMAKE_MODULE_PATH 0 ${s2smtp_SOURCE_DIR}/cmake)
 find_package(cppcodec REQUIRED MODULE)
 
-add_library(
-    s2smtp
+add_library(s2smtp
     src/mime/address.cpp
     src/mime/attachment.cpp
     src/mime/charset.cpp
