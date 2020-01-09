@@ -1,4 +1,4 @@
-[![Action Status](https://github.com/Xoanis/s2smtp/workflows/build/badge.svg)]
+[![Action Status](https://github.com/Xoanis/s2smtp/workflows/build/badge.svg)](https://github.com/Xoanis/s2smtp/actions)
 [![BCH compliance](https://bettercodehub.com/edge/badge/Xoanis/s2smtp?branch=master)](https://bettercodehub.com/)
 # s2smtp #
 
