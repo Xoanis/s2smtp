@@ -66,11 +66,12 @@ void mailbox_t::validate_not_empty() const {
 }
 
 void mailbox_t::validate(const std::string &str) const {
-  static std::string allowed_symbols = "!#$%&'*+-/=?^_`{|}~.";
+  static constexpr const char allowed_symbols[] = "!#$%&'*+-/=?^_`{|}~.";
   for (auto c : str) {
-    if ((allowed_symbols.find(c) == std::string::npos) && !std::isalnum(c)) {
-      throw mime_error(
-          std::string("Forbiden character in \"" + str + "\"").c_str());
+    if ((std::find(std::begin(allowed_symbols), std::end(allowed_symbols), c) ==
+         std::end(allowed_symbols)) &&
+        !std::isalnum(c)) {
+      throw mime_error(std::string("Forbiden character in \"" + str + "\""));
     }
   }
 }
