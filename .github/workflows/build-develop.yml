@@ -1,0 +1,36 @@
+name: build
+
+on: 
+  push:
+    branches: 
+      - develop
+
+jobs:
+  build-vcpkg-vs16-win32-debug:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        ref: 'develop' 
+    - name: build and test
+      run: |
+        vcpkg install boost-asio boost-spirit boost-program-options boost-test cppcodec
+        mkdir build
+        cd build
+        cmake .. -G "Visual Studio 16 2019" -A Win32 "-DCMAKE_TOOLCHAIN_FILE=${env:VCPKG_INSTALLATION_ROOT}\scripts\buildsystems\vcpkg.cmake"
+        cmake --build . --config Debug
+        cmake --build . --config Debug --target run_tests
+  build-vcpkg-vs16-win32-release:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: 'develop'      
+    - name: build and test
+      run: |
+        vcpkg install boost-asio boost-spirit boost-program-options boost-test cppcodec
+        mkdir build
+        cd build
+        cmake .. -G "Visual Studio 16 2019" -A Win32 "-DCMAKE_TOOLCHAIN_FILE=${env:VCPKG_INSTALLATION_ROOT}\scripts\buildsystems\vcpkg.cmake"
+        cmake --build . --config Release
+        cmake --build . --config Release --target run_tests 
