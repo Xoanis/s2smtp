@@ -1,15 +1,15 @@
 // Copyright (c) 2020 Ivan Petrov <petroviv90@gmail.com>
 // Licensed under the MIT license.
 //
-// The module contains types and functions to compound a mime 
+// The module contains types and functions to compound a mime
 // message.
 //
-// type header_t is a simplify represention of message header fields  
+// type header_t is a simplify represention of message header fields
 // (rfc 5322, 3.6.  Field Definitions [page 19])
 // type text_part_t represents inline body part of mime message
 // (rfc 2046, 4.1.  Text Media Type)
 // (rfc 2183, 2.1  The Inline Disposition Type)
-// 
+//
 // References:
 // https://tools.ietf.org/html/rfc5322
 // https://tools.ietf.org/html/rfc2046
@@ -27,8 +27,7 @@
 #include "s2smtp/mime/text.hpp"
 #include "s2smtp/s2smtp_export.h"
 
-namespace s2smtp {
-namespace mime {
+namespace s2smtp::mime {
 
 std::tm get_local_time();
 
@@ -68,7 +67,6 @@ struct message_t {
   attachment_list_t attachments;
 };
 
-} // namespace mime
-} // namespace s2smtp
+} // namespace s2smtp::mime
 
 #endif // MESSAGE_HPP

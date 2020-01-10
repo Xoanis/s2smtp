@@ -3,7 +3,7 @@
 
 #include "s2smtp/mime/text.hpp"
 
-using namespace s2smtp::mime;
+namespace s2smtp::mime {
 
 text_t::text_t(std::string data, charset_t charset)
     : data(std::move(data)), charset(charset) {}
@@ -44,3 +44,4 @@ bool text_t::operator==(const text_t &rh) const {
 }
 
 bool text_t::operator!=(const text_t &rh) const { return !(*this == rh); }
+} // namespace s2smtp::mime

@@ -3,8 +3,6 @@
 
 #include "s2smtp/mime/charset.hpp"
 
-namespace s2smtp {
-namespace mime {
+namespace s2smtp::mime {
 charset_t charset_t::default_charset = charsets::UTF_8;
 }
-} // namespace s2smtp

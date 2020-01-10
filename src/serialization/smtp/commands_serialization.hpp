@@ -8,8 +8,7 @@
 #include "s2smtp/mime/message.hpp"
 #include <string>
 
-namespace s2smtp {
-namespace serialization {
+namespace s2smtp::serialization {
 
 std::string serialize_helo(const std::string &domain);
 std::string serialize_ehlo(const std::string &domain);
@@ -20,7 +19,6 @@ std::string serialize_data_content(const mime::message_t &msg);
 std::string serialize_quit();
 std::string serialize_starttls();
 
-} // namespace serialization
-} // namespace s2smtp
+} // namespace s2smtp::serialization
 
 #endif // COMMANDS_SERIALIZATION_HPP

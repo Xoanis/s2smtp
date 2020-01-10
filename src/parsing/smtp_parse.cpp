@@ -13,9 +13,7 @@
 
 #include "s2smtp/smtp/smtp_error.hpp"
 
-namespace s2smtp {
-namespace parsing {
-namespace ast {
+namespace s2smtp::parsing::ast {
 
 struct reply_line_t {
   std::string code;
@@ -29,16 +27,13 @@ struct server_reply_t {
   reply_line_t required_line;
 };
 
-} // namespace ast
-} // namespace parsing
-} // namespace s2smtp
+} // namespace s2smtp::parsing::ast
 
 BOOST_FUSION_ADAPT_STRUCT(s2smtp::parsing::ast::reply_line_t, code, text)
 BOOST_FUSION_ADAPT_STRUCT(s2smtp::parsing::ast::server_reply_t, optional_lines,
                           required_line)
 
-namespace s2smtp {
-namespace parsing {
+namespace s2smtp::parsing {
 namespace parsers {
 
 namespace x3 = boost::spirit::x3;
@@ -71,6 +66,7 @@ auto const singleline_or_end_signature =
 
 auto const server_reply = x3::rule<class server_reply, ast::server_reply_t>() =
     optional_part >> singleline_or_end_signature;
+    
 } // namespace parsers
 
 using boost::spirit::x3::parse;
@@ -111,5 +107,4 @@ server_reply parse_server_reply(const std::string &data) {
   return convert_from_ast(ast);
 }
 
-} // namespace parsing
-} // namespace s2smtp
+} // namespace s2smtp::parsing

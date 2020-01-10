@@ -4,8 +4,7 @@
 #include "commands_serialization.hpp"
 #include "serialization/mime/message_serialization.hpp"
 
-namespace s2smtp {
-namespace serialization {
+namespace s2smtp::serialization {
 
 std::string serialize_helo(const std::string &domain) {
   return "HELO " + domain + "\r\n";
@@ -37,5 +36,4 @@ std::string serialize_quit() { return "QUIT\r\n"; }
 
 std::string serialize_starttls() { return "STARTTLS\r\n"; }
 
-} // namespace serialization
-} // namespace s2smtp
+} // namespace s2smtp::serialization

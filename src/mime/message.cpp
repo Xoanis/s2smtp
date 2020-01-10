@@ -9,8 +9,7 @@
 #endif
 #include <time.h>
 
-namespace s2smtp {
-namespace mime {
+namespace s2smtp::mime {
 
 // https://en.cppreference.com/w/c/chrono/localtime
 std::tm get_local_time() {
@@ -38,5 +37,4 @@ message_t::message_t(mailbox_t from, std::tm date)
     : header(std::move(from), date) {}
 message_t::message_t(mailbox_t from) : header(std::move(from)) {}
 
-} // namespace mime
-} // namespace s2smtp
+} // namespace s2smtp::mime

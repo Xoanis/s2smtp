@@ -1,7 +1,7 @@
 // Copyright (c) 2020 Ivan Petrov <petroviv90@gmail.com>
 // Licensed under the MIT license.
 //
-// The module base_channel_t class. 
+// The module base_channel_t class.
 // It represents an abstract communication channel with an SMTP server.
 
 #ifndef BASE_CHANNEL_HPP
@@ -13,8 +13,7 @@
 
 #include "network_error.hpp"
 
-namespace s2smtp {
-namespace network {
+namespace s2smtp::network {
 
 using duration_t = std::chrono::steady_clock::duration;
 
@@ -40,7 +39,6 @@ public:
 
 using base_channel_ptr_t = std::unique_ptr<base_channel_t>;
 
-} // namespace network
-} // namespace s2smtp
+} // namespace s2smtp::network
 
 #endif // BASE_CHANNEL_HPP

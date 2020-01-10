@@ -1,7 +1,7 @@
 // Copyright (c) 2020 Ivan Petrov <petroviv90@gmail.com>
 // Licensed under the MIT license.
 //
-// The module contains charset_t type representing text with arbitrary charset. 
+// The module contains charset_t type representing text with arbitrary charset.
 // of message headers and inline body.
 
 #ifndef CHARSET_HPP
@@ -11,11 +11,9 @@
 #include <variant>
 #include <vector>
 
-
 #include "s2smtp/s2smtp_export.h"
 
-namespace s2smtp {
-namespace mime {
+namespace s2smtp::mime {
 
 struct S2SMTP_EXPORT charset_t {
 public:
@@ -42,7 +40,6 @@ const charset_t windows_1252 = charset_t("Windows-1252");
 
 } // namespace charsets
 
-} // namespace mime
-} // namespace s2smtp
+} // namespace s2smtp::mime
 
 #endif // CHARSET_HPP

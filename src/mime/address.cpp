@@ -9,7 +9,7 @@
 #include <numeric>
 #include <type_traits>
 
-using namespace s2smtp::mime;
+namespace s2smtp::mime {
 
 mailbox_t::mailbox_t(std::string local_part, std::string domain,
                      text_t display_name)
@@ -79,3 +79,5 @@ void mailbox_t::validate(const std::string &str) const {
 std::string group_t::to_string() const {
   return display_name.data + ": " + mime::to_string(mailbox_list);
 }
+
+} // namespace s2smtp::mime

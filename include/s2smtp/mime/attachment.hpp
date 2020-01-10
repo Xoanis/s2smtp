@@ -2,12 +2,12 @@
 // Licensed under the MIT license.
 //
 // The module contains types to compound a mime message
-// type attachment_t represents message body part with 
+// type attachment_t represents message body part with
 // the attachment disposition type.
 // References:
 // https://tools.ietf.org/html/rfc2183
-// https://tools.ietf.org/html/rfc2045 
-// https://tools.ietf.org/html/rfc2046 
+// https://tools.ietf.org/html/rfc2045
+// https://tools.ietf.org/html/rfc2046
 
 #ifndef ATTACHMENT_HPP
 #define ATTACHMENT_HPP
@@ -19,8 +19,7 @@
 #include "s2smtp/mime/mime_error.hpp"
 #include "s2smtp/s2smtp_export.h"
 
-namespace s2smtp {
-namespace mime {
+namespace s2smtp::mime {
 
 struct S2SMTP_EXPORT attachment_info_t {
   attachment_info_t(std::string name, std::string content_type);
@@ -50,6 +49,5 @@ private:
 
 using attachment_list_t = std::vector<attachment_t>;
 
-} // namespace mime
-} // namespace s2smtp
+} // namespace s2smtp::mime
 #endif // ATTACHMENT_HPP

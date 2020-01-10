@@ -5,8 +5,7 @@
 
 #include <cppcodec/base64_rfc4648.hpp>
 
-namespace s2smtp {
-namespace serialization {
+namespace s2smtp::serialization {
 
 void serialize(std::stringstream &s, const mime::text_t &text) {
   if (text.data.empty())
@@ -17,5 +16,4 @@ void serialize(std::stringstream &s, const mime::text_t &text) {
   s << result;
 }
 
-} // namespace serialization
-} // namespace s2smtp
+} // namespace s2smtp::serialization

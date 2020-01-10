@@ -10,8 +10,7 @@
 #include "overloaded.hpp"
 #include "text_serialization.hpp"
 
-namespace s2smtp {
-namespace serialization {
+namespace s2smtp::serialization {
 
 void serialize(std::stringstream &s, const std::tm &datetime) {
   s << std::put_time(&datetime, "%a, %d %b %Y %H:%M:%S %z");
@@ -37,5 +36,4 @@ void serialize(std::stringstream &s, const mime::header_t &header) {
   serialize_field(s, "Subject", header.subject);
 }
 
-} // namespace serialization
-} // namespace s2smtp
+} // namespace s2smtp::serialization

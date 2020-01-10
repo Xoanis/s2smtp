@@ -9,11 +9,10 @@
 
 #include "s2smtp/mime/text.hpp"
 
-namespace s2smtp {
-namespace serialization {
+namespace s2smtp::serialization {
 
 void serialize(std::stringstream &s, const mime::text_t &text);
+
 }
-} // namespace s2smtp
 
 #endif // TEXT_SERIALIZATION_HPP

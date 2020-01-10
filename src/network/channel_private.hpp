@@ -10,8 +10,7 @@
 
 #include "s2smtp/network/network_error.hpp"
 
-namespace s2smtp {
-namespace network {
+namespace s2smtp::network {
 
 using namespace boost::asio;
 using duration_t = std::chrono::steady_clock::duration;
@@ -158,7 +157,6 @@ private:
   ssl_asio_socket_t ssl_socket_;
 };
 
-} // namespace network
-} // namespace s2smtp
+} // namespace s2smtp::network
 
 #endif // PRIVATE_CHANNEL_HPP

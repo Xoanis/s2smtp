@@ -10,11 +10,10 @@
 #include "s2smtp/mime/attachment.hpp"
 #include "s2smtp/mime/message.hpp"
 
-namespace s2smtp {
-namespace serialization {
+namespace s2smtp::serialization {
 
 std::string serialize(const mime::message_t &msg);
+
 }
-} // namespace s2smtp
 
 #endif // MIME_MESSAGE_SERIALIZATION_HPP

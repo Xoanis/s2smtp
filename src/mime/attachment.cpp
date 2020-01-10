@@ -7,8 +7,7 @@
 #include <fstream>
 #include <iterator>
 
-namespace s2smtp {
-namespace mime {
+namespace s2smtp::mime {
 
 namespace fs = std::filesystem;
 
@@ -57,5 +56,4 @@ attachment_t::attachment_t(const std::string &file_path)
     : attachment_t(fs::path(file_path).filename().string(),
                    open_fstream(file_path)) {}
 
-} // namespace mime
-} // namespace s2smtp
+} // namespace s2smtp::mime

@@ -6,8 +6,7 @@
 
 #include "s2smtp/network/base_channel.hpp"
 
-namespace s2smtp {
-namespace network {
+namespace s2smtp::network {
 
 class channel_t : public base_channel_t {
 public:
@@ -33,7 +32,6 @@ std::unique_ptr<network::base_channel_t>
 establish_secure_channel(const std::string &domain, uint16_t port,
                          ssl_protocol_t ssl_protocol, duration_t timeout);
 
-} // namespace network
-} // namespace s2smtp
+} // namespace s2smtp::network
 
 #endif // CHANNEL_HPP

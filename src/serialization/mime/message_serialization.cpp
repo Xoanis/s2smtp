@@ -8,8 +8,7 @@
 #include "serialization/mime/header_serialization.hpp"
 #include <cppcodec/base64_rfc4648.hpp>
 
-namespace s2smtp {
-namespace serialization {
+namespace s2smtp::serialization {
 
 using base64 = cppcodec::base64_rfc4648;
 
@@ -80,5 +79,4 @@ std::string serialize(const mime::message_t &msg) {
   return s.str();
 }
 
-} // namespace serialization
-} // namespace s2smtp
+} // namespace s2smtp::serialization

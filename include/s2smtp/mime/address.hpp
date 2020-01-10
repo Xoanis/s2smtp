@@ -14,8 +14,7 @@
 #include "s2smtp/mime/text.hpp"
 #include "s2smtp/s2smtp_export.h"
 
-namespace s2smtp {
-namespace mime {
+namespace s2smtp::mime {
 
 struct S2SMTP_EXPORT mailbox_t {
   mailbox_t(std::string local_part, std::string domain, text_t display_name);
@@ -71,7 +70,6 @@ template <typename T> std::string to_string(const T &obj) {
   }
 }
 
-} // namespace mime
-} // namespace s2smtp
+} // namespace s2smtp::mime
 
 #endif // ADDRESS_HPP

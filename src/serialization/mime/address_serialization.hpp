@@ -9,8 +9,7 @@
 
 #include "s2smtp/mime/address.hpp"
 
-namespace s2smtp {
-namespace serialization {
+namespace s2smtp::serialization {
 
 void serialize(std::stringstream &s, const mime::mailbox_t &mailbox);
 void serialize(std::stringstream &s, const mime::mailbox_list_t &mbl);
@@ -18,7 +17,6 @@ void serialize(std::stringstream &s, const mime::group_t &g);
 void serialize(std::stringstream &s, const mime::address_t &addr);
 void serialize(std::stringstream &s, const mime::address_list_t &adl);
 
-} // namespace serialization
-} // namespace s2smtp
+} // namespace s2smtp::serialization
 
 #endif // ADDRESS_SERIALIZATION_HPP

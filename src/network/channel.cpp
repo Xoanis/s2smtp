@@ -4,8 +4,7 @@
 #include "channel.hpp"
 #include "channel_private.hpp"
 
-namespace s2smtp {
-namespace network {
+namespace s2smtp::network {
 
 channel_t::channel_t(const std::string &domain, uint16_t port,
                      duration_t connect_timeout)
@@ -40,5 +39,4 @@ base_channel_ptr_t establish_secure_channel(const std::string &domain,
   return std::make_unique<channel_t>(domain, port, ssl_protocol, timeout);
 }
 
-} // namespace network
-} // namespace s2smtp
+} // namespace s2smtp::network

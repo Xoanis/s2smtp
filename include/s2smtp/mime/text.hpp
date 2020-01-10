@@ -1,9 +1,9 @@
 // Copyright (c) 2020 Ivan Petrov <petroviv90@gmail.com>
 // Licensed under the MIT license.
 //
-// The module contains text_t type to representing charset 
+// The module contains text_t type to representing charset
 // of message headers and inline body.
-// 
+//
 // References:
 // https://tools.ietf.org/html/rfc2047
 // https://tools.ietf.org/html/rfc2046
@@ -16,8 +16,7 @@
 #include "s2smtp/mime/charset.hpp"
 #include "s2smtp/s2smtp_export.h"
 
-namespace s2smtp {
-namespace mime {
+namespace s2smtp::mime {
 
 struct S2SMTP_EXPORT text_t {
   text_t() = default;
@@ -37,7 +36,6 @@ struct S2SMTP_EXPORT text_t {
   charset_t charset;
 };
 
-} // namespace mime
-} // namespace s2smtp
+} // namespace s2smtp::mime
 
 #endif // TEXT_HPP

@@ -4,8 +4,7 @@
 #include "address_serialization.hpp"
 #include "text_serialization.hpp"
 
-namespace s2smtp {
-namespace serialization {
+namespace s2smtp::serialization {
 
 void serialize_addr_spec(std::stringstream &s, const mime::mailbox_t &mailbox) {
   s << mailbox.local_part() + '@' + mailbox.domain();
@@ -76,5 +75,4 @@ void serialize(std::stringstream &s, const mime::address_list_t &adl) {
   }
 }
 
-} // namespace serialization
-} // namespace s2smtp
+} // namespace s2smtp::serialization

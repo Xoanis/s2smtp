@@ -8,14 +8,12 @@
 #include <exception>
 #include <string>
 
-namespace s2smtp {
-namespace parsing {
+namespace s2smtp::parsing {
 
 bool is_begin_of_multiline_reply(const std::string &data);
 bool is_end_of_multiline_reply(const std::string &data);
 server_reply parse_server_reply(const std::string &data);
 
-} // namespace parsing
-} // namespace s2smtp
+} // namespace s2smtp::parsing
 
 #endif // SMTP_PARSE_HPP
