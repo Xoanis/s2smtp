@@ -54,7 +54,23 @@ PRIVATE
     Boost::date_time
     OpenSSL::SSL
     cppcodec::cppcodec
+    stdc++fs
 )
+if("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU")
+    if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS 8)
+        message(FATAL_ERROR "GCC version must be >= 8!")
+    endif()
+    
+    if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS 9)
+        message(STATUS "GCC version is less than 9. Linking stdc++fs")
+        target_link_libraries(
+            s2smtp 
+        PRIVATE
+            stdc++fs
+        )
+    endif()
+endif()
+
 
 include(GNUInstallDirs)
 set(INSTALL_CONFIGDIR ${CMAKE_INSTALL_LIBDIR}/cmake/s2smtp)
