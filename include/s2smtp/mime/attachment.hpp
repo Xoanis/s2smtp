@@ -1,9 +1,8 @@
 // Copyright (c) 2020 Ivan Petrov <petroviv90@gmail.com>
 // Licensed under the MIT license.
 //
-// The module contains types to compound a mime message
-// type attachment_t represents message body part with
-// the attachment disposition type.
+// The module contains types to compound a mime message.
+// Type attachment_t represents message body part with the attachment disposition type.
 // References:
 // https://tools.ietf.org/html/rfc2183
 // https://tools.ietf.org/html/rfc2045
