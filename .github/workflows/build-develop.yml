@@ -9,9 +9,9 @@ jobs:
   build-vcpkg-vs16-win32-debug:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
       with:
-        ref: 'develop' 
+        ref: develop
     - name: build and test
       run: |
         vcpkg install boost-asio boost-spirit boost-program-options boost-test cppcodec
@@ -25,7 +25,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        ref: 'develop'      
+        ref: develop     
     - name: build and test
       run: |
         vcpkg install boost-asio boost-spirit boost-program-options boost-test cppcodec
