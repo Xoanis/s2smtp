@@ -1,4 +1,5 @@
 [![Action Status](https://github.com/Xoanis/s2smtp/workflows/build/badge.svg)](https://github.com/Xoanis/s2smtp/actions)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/626fd63eca644520a4a4b9ca8673453f)](https://www.codacy.com/manual/Xoanis/s2smtp?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Xoanis/s2smtp&amp;utm_campaign=Badge_Grade)
 [![BCH compliance](https://bettercodehub.com/edge/badge/Xoanis/s2smtp?branch=master)](https://bettercodehub.com/)
 # s2smtp #
 
