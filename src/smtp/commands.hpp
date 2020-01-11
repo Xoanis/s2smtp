@@ -56,7 +56,7 @@ private:
 };
 
 struct quit : command_t {
-  quit(network::base_channel_t &channel);
+  explicit quit(network::base_channel_t &channel);
 };
 
 // SMTP Service Extension for Secure SMTP over Transport Layer Security

@@ -13,7 +13,7 @@ namespace s2smtp {
 
 class mime_error : public error {
 public:
-  mime_error(std::string msg) : error(std::move(msg)) {}
+  explicit mime_error(std::string msg) : error(std::move(msg)) {}
 };
 
 } // namespace s2smtp

@@ -165,13 +165,13 @@ BOOST_AUTO_TEST_CASE(test_mailbox_list) {
     BOOST_TEST_REQUIRE(ml.size() == 3);
     BOOST_CHECK_EQUAL(ml[0].local_part(), "test_loc");
     BOOST_CHECK_EQUAL(ml[0].domain(), "test_dom");
-    BOOST_CHECK_EQUAL(ml[0].display_name(), "1");
+    BOOST_CHECK_EQUAL(ml[0].display_name(), text_t{"1"});
     BOOST_CHECK_EQUAL(ml[1].local_part(), "localpart");
     BOOST_CHECK_EQUAL(ml[1].domain(), "domain.test");
-    BOOST_CHECK_EQUAL(ml[1].display_name(), "name");
+    BOOST_CHECK_EQUAL(ml[1].display_name(), text_t{"name"});
     BOOST_CHECK_EQUAL(ml[2].local_part(), "localpart");
     BOOST_CHECK_EQUAL(ml[2].domain(), "domain.test");
-    BOOST_CHECK_EQUAL(ml[2].display_name(), "");
+    BOOST_CHECK_EQUAL(ml[2].display_name(), text_t{""});
     ml.clear();
     BOOST_TEST_REQUIRE(ml.size() == 0);
   }

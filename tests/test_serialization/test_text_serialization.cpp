@@ -11,7 +11,7 @@ BOOST_AUTO_TEST_CASE( test_serialize_text )
 
     std::stringstream s;
 
-    serialize(s, "sometext");
+    serialize(s, text_t{"sometext"});
 
     BOOST_CHECK_EQUAL(s.str(), "=?UTF-8?B?c29tZXRleHQ=?=");
 }

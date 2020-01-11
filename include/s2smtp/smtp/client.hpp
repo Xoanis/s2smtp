@@ -14,6 +14,13 @@
 
 namespace s2smtp {
 
+struct end_point_t {
+  std::string domain;
+  uint16_t port;
+};
+
+enum class security_method_t { e_none, e_starttls, e_ssl_tls };
+
 class S2SMTP_EXPORT client_t {
 public:
   client_t(const end_point_t &ep, security_method_t method,

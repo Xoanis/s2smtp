@@ -47,7 +47,7 @@ struct server_reply {
 
 class server_reply_error : public smtp_error {
 public:
-  server_reply_error(server_reply reply);
+  explicit server_reply_error(server_reply reply);
 };
 
 } // namespace s2smtp

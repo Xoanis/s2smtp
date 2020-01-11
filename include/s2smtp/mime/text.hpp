@@ -21,8 +21,8 @@ namespace s2smtp::mime {
 struct S2SMTP_EXPORT text_t {
   text_t() = default;
   text_t(std::string data, charset_t charset);
-  text_t(std::string data);
-  text_t(const char *data);
+  explicit text_t(std::string data);
+  explicit text_t(const char *data);
   text_t(const text_t &txt);
   text_t(text_t &&txt);
   text_t &operator=(std::string rh);

@@ -18,6 +18,12 @@ namespace s2smtp::mime {
 const std::string attachment_info_t::default_content_type =
     "application/octet-stream";
 
+void check_rdstate(const attachment_info_t &info, const std::istream &stream) {
+  if (stream.rdstate())
+    throw s2smtp::mime_error("File \"" + info.name +
+                             "\": Stream reading error");
+}
+
 bool attachment_info_t::operator==(const attachment_info_t &rh) const {
   return (name == rh.name) && (content_type == rh.content_type);
 }
@@ -31,15 +37,13 @@ attachment_info_t::attachment_info_t(std::string name)
 attachment_t::attachment_t(attachment_info_t info, std::istream &stream)
     : info_(std::move(info)), content_(std::istreambuf_iterator<char>(stream),
                                        std::istreambuf_iterator<char>()) {
-  if (stream.rdstate())
-    throw mime_error("File \"" + info_.name + "\": Stream reading error");
+  check_rdstate(info_, stream);
 }
 
 attachment_t::attachment_t(attachment_info_t info, std::istream &&stream)
     : info_(std::move(info)), content_(std::istreambuf_iterator<char>(stream),
                                        std::istreambuf_iterator<char>()) {
-  if (stream.rdstate())
-    throw mime_error("File \"" + info_.name + "\": Stream reading error");
+  check_rdstate(info_, stream);
 }
 
 attachment_t::attachment_t(const std::string &attach_name, std::istream &stream)

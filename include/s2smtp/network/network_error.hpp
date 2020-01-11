@@ -14,7 +14,7 @@ namespace s2smtp {
 
 class network_error : public error {
 public:
-  network_error(std::error_code e) : error(e.message()) {}
+  explicit network_error(std::error_code e) : error(e.message()) {}
 };
 
 } // namespace s2smtp

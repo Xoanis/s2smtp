@@ -20,6 +20,17 @@ mailbox_t::mailbox_t(std::string local_part, std::string domain,
   validate(domain_);
 }
 
+mailbox_t::mailbox_t(std::string local_part, std::string domain,
+                     std::string display_name)
+    : mailbox_t(std::move(local_part), std::move(domain),
+                text_t{display_name}) {}
+
+mailbox_t::mailbox_t(const std::string &addr_spec, std::string display_name)
+    : mailbox_t(addr_spec, text_t{display_name}) {}
+
+mailbox_t::mailbox_t(const std::string &addr_spec, const char *display_name)
+    : mailbox_t(addr_spec, text_t{display_name}) {}
+
 mailbox_t::mailbox_t(const std::string &addr_spec, text_t display_name)
     : display_name_(std::move(display_name)) {
   auto it = std::find(addr_spec.begin(), addr_spec.end(), '@');
@@ -37,10 +48,10 @@ mailbox_t::mailbox_t(const std::string &addr_spec, text_t display_name)
 }
 
 mailbox_t::mailbox_t(const std::string &addr_spec)
-    : mailbox_t(addr_spec, std::string{}) {}
+    : mailbox_t(addr_spec, text_t{}) {}
 
 mailbox_t::mailbox_t(const char *addr_spec)
-    : mailbox_t(std::string(addr_spec), std::string{}) {}
+    : mailbox_t(std::string(addr_spec), text_t{}) {}
 
 std::string mailbox_t::to_string() const {
   if (local_part_.empty() && domain_.empty())
@@ -75,6 +86,14 @@ void mailbox_t::validate(const std::string &str) const {
     }
   }
 }
+
+group_t::group_t(text_t display_name, mailbox_list_t mailbox_list)
+    : display_name{std::move(display_name)}, mailbox_list{
+                                                 std::move(mailbox_list)} {}
+
+group_t::group_t(std::string display_name, mailbox_list_t mailbox_list)
+    : display_name{std::move(display_name)}, mailbox_list{
+                                                 std::move(mailbox_list)} {}
 
 std::string group_t::to_string() const {
   return display_name.data + ": " + mime::to_string(mailbox_list);

@@ -25,13 +25,6 @@
 
 namespace s2smtp {
 
-struct end_point_t {
-  std::string domain;
-  uint16_t port;
-};
-
-enum class security_method_t { e_none, e_starttls, e_ssl_tls };
-
 struct credentials_t {
   std::string user;
   std::string password;
