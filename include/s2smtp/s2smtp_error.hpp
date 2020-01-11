@@ -14,7 +14,7 @@ namespace s2smtp {
 
 class error : public std::exception {
 public:
-  error(std::string msg) : text_(std::move(msg)) {}
+  explicit error(std::string msg) : text_(std::move(msg)) {}
   const char *what() const noexcept override { return text_.c_str(); }
 
 private:

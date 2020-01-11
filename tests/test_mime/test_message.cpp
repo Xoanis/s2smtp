@@ -63,11 +63,11 @@ BOOST_AUTO_TEST_CASE(message_ctor) {
   message_t msg("test@t.t");
   BOOST_CHECK_EQUAL(msg.header.from.local_part(), "test");
   BOOST_CHECK_EQUAL(msg.header.from.domain(), "t.t");
-  BOOST_CHECK_EQUAL(msg.header.from.display_name().data, "");
+  BOOST_CHECK(msg.header.from.display_name() == text_t{});
   BOOST_CHECK(msg.text.text_content_type == text_content_types::plain);
   BOOST_CHECK_EQUAL(msg.text.content.data, "");
 
-  text_part_t tp{text_content_types::plain, ""};
+  text_part_t tp{text_content_types::plain, text_t{}};
   tp.text_content_type = text_content_types::html;
   tp.content = "test";
   msg.text = std::move(tp);

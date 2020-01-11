@@ -33,7 +33,7 @@ std::tm get_local_time();
 
 struct header_t {
   header_t(mailbox_t from, std::tm date);
-  header_t(mailbox_t from);
+  explicit header_t(mailbox_t from);
   std::tm date;
   mailbox_t from;
   address_list_t reply_to;
@@ -61,7 +61,7 @@ struct text_part_t {
 
 struct message_t {
   message_t(mailbox_t from, std::tm date);
-  message_t(mailbox_t from);
+  explicit message_t(mailbox_t from);
   header_t header;
   text_part_t text;
   attachment_list_t attachments;
