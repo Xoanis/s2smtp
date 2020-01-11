@@ -22,7 +22,7 @@ namespace s2smtp::mime {
 
 struct S2SMTP_EXPORT attachment_info_t {
   attachment_info_t(std::string name, std::string content_type);
-  attachment_info_t(std::string name);
+  explicit attachment_info_t(std::string name);
   bool operator==(const attachment_info_t &rh) const;
   std::string name;
   std::string content_type;
@@ -36,7 +36,7 @@ struct S2SMTP_EXPORT attachment_t {
   attachment_t(attachment_info_t info, std::istream &&stream);
   attachment_t(const std::string &attach_name, std::istream &stream);
   attachment_t(const std::string &attach_name, std::istream &&stream);
-  attachment_t(const std::string &file_path);
+  explicit attachment_t(const std::string &file_path);
 
   const attachment_info_t &info() const { return info_; }
   const octetvector_t &content() const { return content_; }

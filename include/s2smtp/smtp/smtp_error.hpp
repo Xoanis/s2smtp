@@ -12,7 +12,7 @@
 namespace s2smtp {
 class smtp_error : public error {
 public:
-  smtp_error(std::string msg) : error(std::move(msg)) {}
+  explicit smtp_error(std::string msg) : error(std::move(msg)) {}
 };
 } // namespace s2smtp
 

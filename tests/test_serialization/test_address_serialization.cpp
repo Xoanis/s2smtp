@@ -57,7 +57,8 @@ BOOST_AUTO_TEST_CASE(test_serialize_group) {
 
   {
     std::stringstream s;
-    serialize(s, group_t{"group1", {{"s@s.s"}, {"r@r.s", "name"}}});
+    serialize(s, group_t{text_t{"group1"},
+                         {mailbox_t{"s@s.s"}, mailbox_t{"r@r.s", "name"}}});
     BOOST_CHECK_EQUAL(
         s.str(), "=?UTF-8?B?Z3JvdXAx?=: s@s.s, =?UTF-8?B?bmFtZQ==?= <r@r.s>;");
   }
@@ -75,7 +76,7 @@ BOOST_AUTO_TEST_CASE(test_serialize_address) {
 
   {
     std::stringstream s;
-    serialize(s, address_t{group_t{"group1", {{"s@s.s"}, {"r@r.s", "name"}}}});
+    serialize(s, address_t{group_t{text_t{"group1"}, {{"s@s.s"}, {"r@r.s", "name"}}}});
     BOOST_CHECK_EQUAL(
         s.str(), "=?UTF-8?B?Z3JvdXAx?=: s@s.s, =?UTF-8?B?bmFtZQ==?= <r@r.s>;");
   }

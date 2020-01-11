@@ -18,6 +18,9 @@ namespace s2smtp::mime {
 
 struct S2SMTP_EXPORT mailbox_t {
   mailbox_t(std::string local_part, std::string domain, text_t display_name);
+  mailbox_t(std::string local_part, std::string domain, std::string display_name);
+  mailbox_t(const std::string &addr_spec, std::string display_name);
+  mailbox_t(const std::string &addr_spec, const char *display_name);
   mailbox_t(const std::string &addr_spec, text_t display_name);
   mailbox_t(const std::string &addr_spec);
   mailbox_t(const char *addr_spec);
@@ -43,6 +46,10 @@ private:
 using mailbox_list_t = std::vector<mailbox_t>;
 
 struct S2SMTP_EXPORT group_t {
+  group_t() = default;
+  group_t(text_t display_name, mailbox_list_t mailbox_list);
+  group_t(std::string display_name, mailbox_list_t mailbox_list);
+
   text_t display_name;
   mailbox_list_t mailbox_list;
   std::string to_string() const;
