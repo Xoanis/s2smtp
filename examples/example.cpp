@@ -45,33 +45,22 @@ int main(int argc, char *argv[]) {
     po::options_description desc("Simple SMTP sender based on s2smtp library "
                                  "(version " s2smtp_VERSION_STR ")\n"
                                  "Allowed options");
-    desc.add_options()("help,h", "Reference Information")(
-        "domain,d", po::value<std::string>(),
-        "SMTP server (e.g. smtp.gmail.com)")(
-        "port,p", po::value<uint16_t>()->default_value(587),
-        "SMTP port (standard ports are 25, 587, 465)")(
-        "security,s", po::value<uint16_t>()->default_value(2),
-        "Security method: 0 - none, 1 - STARTTLS, 2 - SSL/TLS")(
-        "auth,h", po::value<uint16_t>()->default_value(1),
-        "Auth mechanism: 0 - none, 1 - LOGIN")(
-        "from,f", po::value<std::string>(),
-        "sender email address")("to,r", po::value<std::vector<std::string>>(),
-                                "Recipients (e.g. user_to@domain.com)")(
-        "reply-to,l", po::value<std::vector<std::string>>(),
-        "Reply to (e.g. reply@me.com)")(
-        "cc,c", po::value<std::vector<std::string>>(),
-        "Sent message copy to")("bcc,b", po::value<std::vector<std::string>>(),
-                                "Sent message blind copy to")(
-        "subject,t", po::value<std::string>()->default_value(""),
-        "Message subject")("text,m",
-                           po::value<std::string>()->default_value(""),
-                           "Message inline text")(
-        "attach,a", po::value<std::vector<std::string>>(),
-        "Files to send (absolute or relative path)")(
-        "charset,e",
-        po::value<std::string>()->default_value(
-            mime::charset_t::default_charset.to_string()),
-        "Input character encoding");
+    desc.add_options()
+        ("help,h", "Reference Information")
+        ("domain,d", po::value<std::string>(), "SMTP server (e.g. smtp.gmail.com)")
+        ("port,p", po::value<uint16_t>()->default_value(587), "SMTP port (standard ports are 25, 587, 465)")
+        ("security,s", po::value<uint16_t>()->default_value(2), "Security method: 0 - none, 1 - STARTTLS, 2 - SSL/TLS")
+        ("auth,h", po::value<uint16_t>()->default_value(1), "Auth mechanism: 0 - none, 1 - LOGIN")
+        ("from,f", po::value<std::string>(), "Sender's email address")
+        ("to,r", po::value<std::vector<std::string>>(), "Recipients (e.g. user_to@domain.com)")
+        ("reply-to,l", po::value<std::vector<std::string>>(), "Reply to (e.g. reply@me.com)")
+        ("cc,c", po::value<std::vector<std::string>>(), "Sent message copy to")
+        ("bcc,b", po::value<std::vector<std::string>>(), "Sent message blind copy to")
+        ("subject,t", po::value<std::string>()->default_value(""), "Message subject")
+        ("text,m", po::value<std::string>()->default_value(""), "Message inline text")
+        ("attach,a", po::value<std::vector<std::string>>(), "Files to send (absolute or relative path)")
+        ("charset,e", po::value<std::string>()->default_value(mime::charset_t::default_charset.to_string()), "Input character encoding")
+    ;
 
     po::variables_map vm;
     po::store(po::parse_command_line(argc, argv, desc), vm);
