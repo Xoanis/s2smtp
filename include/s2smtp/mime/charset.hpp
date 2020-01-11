@@ -20,7 +20,7 @@ public:
   static charset_t default_charset;
 
   charset_t() : value_(default_charset.value_) {}
-  charset_t(std::string txt) : value_(std::move(txt)) {}
+  explicit charset_t(std::string txt) : value_(std::move(txt)) {}
 
   std::string to_string() const { return value_; }
 
