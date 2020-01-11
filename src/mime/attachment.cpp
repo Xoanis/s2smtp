@@ -3,13 +3,17 @@
 
 #include "s2smtp/mime/attachment.hpp"
 
+#if ( defined(__GNUC__) && !defined(__llvm__) && (__GNUC___ < 8) )
+#include <experimental/filesystem>
+namespace fs = std::experimental::filesystem;
+#else
 #include <filesystem>
+namespace fs = std::filesystem;
+#endif
 #include <fstream>
 #include <iterator>
 
 namespace s2smtp::mime {
-
-namespace fs = std::filesystem;
 
 const std::string attachment_info_t::default_content_type =
     "application/octet-stream";
