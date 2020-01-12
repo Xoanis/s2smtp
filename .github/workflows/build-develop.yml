@@ -15,7 +15,7 @@ jobs:
     - name: Cache node modules
       uses: actions/cache@v1
       with:
-        path: ${{VCPKG_INSTALLATION_ROOT}}
+        path: vcpkg
         key: build-vcpkg-vs16-win32-debug
     - name: build and test
       run: |
