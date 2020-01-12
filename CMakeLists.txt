@@ -1,4 +1,5 @@
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.12) #recommended version >15
+
 project(s2smtp VERSION 0.1.0 LANGUAGES CXX)
 
 OPTION( BUILD_EXAMPLES "build examples?" ON )
@@ -48,7 +49,7 @@ PRIVATE
 target_link_libraries(
     s2smtp 
 PRIVATE
-    Boost::headers
+    Boost::boost
     Boost::thread
     Boost::system
     Boost::date_time
