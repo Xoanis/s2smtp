@@ -101,6 +101,6 @@ jobs:
         -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -DCMAKE_BUILD_TYPE:STRING=Release \
         -DCMAKE_C_COMPILER:FILEPATH=/usr/bin/gcc-7 \
         -DCMAKE_CXX_COMPILER:FILEPATH=/usr/bin/g++-7 \
-        -H/../ -B/. "-GUnix Makefiles"
+        -S .. -B . "-GUnix Makefiles"
         cmake --build . --config Release
         cmake --build . --config Release --target run_tests 
