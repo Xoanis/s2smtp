@@ -96,6 +96,6 @@ jobs:
       run: |
         mkdir build
         cd build
-        cmake .. -G "Unix Makefiles" "-DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake" "-DCMAKE_BUILD_TYPE=Release"       
+        cmake .. -G "Unix Makefiles" -Wno-dev "-DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake" "-DCMAKE_BUILD_TYPE=Release"       
         cmake --build . --config Release
         cmake --build . --config Release --target run_tests 
