@@ -68,3 +68,39 @@ jobs:
         cmake .. -G "Visual Studio 16 2019" -A Win32 "-DCMAKE_TOOLCHAIN_FILE=..\vcpkg\scripts\buildsystems\vcpkg.cmake"
         cmake --build . --config Release
         cmake --build . --config Release --target run_tests 
+  build-vcpkg-gcc-7-4-ubuntu-latest-release:
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: develop     
+    - name: cache
+      id: cache-id
+      uses: actions/cache@v1
+      with:
+        path: vcpkg
+        key: build-vcpkg-gcc-7-4-ubuntu-latest-release
+    - name: install dependencies
+      if: steps.cache-id.outputs.cache-hit != 'true'
+      run: |
+        git clone https://github.com/microsoft/vcpkg
+        cd vcpkg        
+        ./bootstrap-vcpkg.sh
+        export PATH=$(pwd):$PATH
+        vcpkg integrate install
+        vcpkg install boost-asio boost-spirit boost-program-options boost-test cppcodec
+        rm -rf buildtrees downloads packages    
+        cd ..    
+      shell: bash
+    - name: build and test
+      run: |
+        mkdir build
+        cd build
+        cmake --no-warn-unused-cli \
+        -DCMAKE_TOOLCHAIN_FILE:STRING=../vcpkg/scripts/buildsystems/vcpkg.cmake \ 
+        -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -DCMAKE_BUILD_TYPE:STRING=Release \
+        -DCMAKE_C_COMPILER:FILEPATH=/usr/bin/gcc-7 \
+        -DCMAKE_CXX_COMPILER:FILEPATH=/usr/bin/g++-7 \
+        -H/../ -B/. "-GUnix Makefiles"
+        cmake --build . --config Release
+        cmake --build . --config Release --target run_tests 
