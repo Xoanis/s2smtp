@@ -96,11 +96,6 @@ jobs:
       run: |
         mkdir build
         cd build
-        cmake .. \
-        -DCMAKE_TOOLCHAIN_FILE:STRING=../vcpkg/scripts/buildsystems/vcpkg.cmake \ 
-        -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -DCMAKE_BUILD_TYPE:STRING=Release \
-        -DCMAKE_C_COMPILER:FILEPATH=/usr/bin/gcc-7 \
-        -DCMAKE_CXX_COMPILER:FILEPATH=/usr/bin/g++-7 \
-        "-GUnix Makefiles"
+        cmake .. -G "Unix Makefiles" "-DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake" "-DCMAKE_BUILD_TYPE=Release"       
         cmake --build . --config Release
         cmake --build . --config Release --target run_tests 
